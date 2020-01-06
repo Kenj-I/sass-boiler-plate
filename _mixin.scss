@@ -1,0 +1,107 @@
+// Media queries
+@mixin mq($breakpoint: m) {
+  @media screen and (max-width: map-get($mq-breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+// font size
+
+// box size
+@mixin size($w: 100%, $h: $w) {
+  width: $w;
+  height: $h;
+}
+
+// flex
+@mixin flex($j: center, $a: center) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: $j;
+  align-items: $a;
+
+  @content;
+}
+
+
+// center
+@mixin center($direction) {
+  position: absolute;
+
+  @if $direction==xy {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @else if $direction==x {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @else if $direction==y {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+
+
+// absolute position
+@mixin abpos($top:initial, $right:initial, $bottom:initial, $left:initial) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// link color
+@mixin link-color($color, $subcolor) {
+  color: $color;
+
+  @if $subcolor {
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $subcolor;
+    }
+  }
+
+  @else {
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: lighten($color, 20%);
+    }
+  }
+}
+
+// opacity for cross browser
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $ieopacity: ($opacity * 100);
+  filter: alpha(opacity=$ieopacity);
+}
+
+
+// text wrap {
+@mixin truncate($width: 100%) {
+  width: $width;
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+$PATH_IMG: '../assets/image/';
+
+@mixin background-image($fileName) {
+  background-image: url($PATH_IMG + $fileName);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  @content;
+}

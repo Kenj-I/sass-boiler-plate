@@ -1,0 +1,19 @@
+// （例）フォントの追加
+@font-face {
+  // font-family: 'Not Sans JP';
+  // src: url('./NotoSansJP-Regular.otf') format('opentype');
+  // font-weight: normal;
+}
+
+
+// デフォルトのフォント設定
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN',
+    Meiryo,
+    sans-serif
+}
