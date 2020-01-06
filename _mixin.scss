@@ -6,6 +6,9 @@
 }
 
 // font size
+@mixin fz($size: $m) {
+  font-size: map-get($fz, $size);
+}
 
 // box size
 @mixin size($w: 100%, $h: $w) {
